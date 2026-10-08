@@ -31,7 +31,16 @@ services:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
 
-      # These automatically populate connection details 
+      # Public hostname/protocol so n8n generates correct
+      # webhook/MCP URLs instead of internal localhost:5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_HOST
+        value: n8n-service-awqg.onrender.com
+      - key: WEBHOOK_URL
+        value: https://n8n-service-awqg.onrender.com/
+
+      # These automatically populate connection details
       # for the Render Postgres database defined below
       - key: DB_TYPE
         value: postgresdb
