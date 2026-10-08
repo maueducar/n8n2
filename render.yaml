@@ -10,14 +10,13 @@
 services:
   - type: web
     plan: free
-    # This runtime builds the service from the repo's Dockerfile, which
-    # extends the official n8n image to bake in the OpenCode chat model
-    # community node (Zen/Go gateways) as an AI Agent provider.
-    runtime: docker
+    # This is the runtime for services that pull a prebuilt Docker image
+    runtime: image
     # You can give the service any name
     name: n8n-service
-    dockerfilePath: ./Dockerfile
-    dockerContext: .
+    image:
+      # Pulls the n8n image tagged as latest from Docker Hub
+      url: docker.io/n8nio/n8n:latest
 
     # All environment variables defined below are required!
     #
